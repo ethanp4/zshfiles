@@ -103,6 +103,21 @@ elif [[ $ID == debian ]] || [[ $ID == ubuntu ]] || [[ $ID_LIKE == *debian* ]]; t
 	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 	export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 	export MANROFFOPT="-c"
+elif [[ $ID == fedora ]] || [[ $ID_LIKE == fedora ]]; then
+	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+	if [[ -x /usr/libexec/pk-command-not-found ]]; then
+		command_not_found_handler() {
+		if [[ -S /var/run/dbus/system_bus_socket && -x /usr/libexec/packagekitd ]]; then
+			/usr/libexec/pk-command-not-found "$@"
+			return $?
+			fi
+			printf "zsh: command not found: %s\n" "$1" >&2
+			return 127
+		}
+	fi
+
 else
 	echo "Not running debian-based or arch linux, Please manually check and edit .zshrc"
 fi
