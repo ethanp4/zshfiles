@@ -5,6 +5,8 @@ This .zshrc basically sets keybinds, completion, history, $PROMPT, the 4 depende
 `zsh-syntax-highlighting zsh-autosuggestions command-not-found bat (for man page colouring)`
 #### Arch
 `zsh-syntax-highlighting zsh-autosuggestions pkgfile bat`
+#### Fedora
+`zsh-syntax-highlighting zsh-autosuggestions bat`
 
 ### Install
 ```
