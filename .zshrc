@@ -107,6 +107,9 @@ elif [[ $ID == fedora ]] || [[ $ID_LIKE == fedora ]]; then
 	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	export MANROFFOPT="-c"
+
 	if [[ -x /usr/libexec/pk-command-not-found ]]; then
 		command_not_found_handler() {
 		if [[ -S /var/run/dbus/system_bus_socket && -x /usr/libexec/packagekitd ]]; then
